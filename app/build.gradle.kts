@@ -49,9 +49,14 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.dagger.hilt)
-    implementation(libs.androidx.activity)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.coroutine)
+
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+    kapt(libs.room.compiler)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
