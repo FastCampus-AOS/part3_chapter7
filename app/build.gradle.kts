@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.dagger.hilt)
+    implementation(libs.androidx.activity)
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.coroutine)
 
