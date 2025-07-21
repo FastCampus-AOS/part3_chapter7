@@ -12,7 +12,7 @@ class ListAdapter(private val handler: Handler) : androidx.recyclerview.widget.L
         parent: ViewGroup,
         viewType: Int
     ): ContentViewHolder {
-        return ContentViewHolder(ItemContentBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ContentViewHolder(ItemContentBinding.inflate(LayoutInflater.from(parent.context), parent, false), handler)
     }
 
     override fun onBindViewHolder(
