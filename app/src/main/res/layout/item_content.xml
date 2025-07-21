@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{() -> handler.onClickItem(item)}"
+        android:onLongClick="@{() -> handler.onLongClickItem(item)}"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp">
 
@@ -25,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:checked="@{item.done}"
-            android:onCheckedChanged="@{(button, check) -> handler.onCheckedItem(item)}"
+            android:onCheckedChanged="@{(button, check) -> handler.onCheckedItem(item, check)}"
             android:text="@{item.content}"
             android:textSize="18sp"
             android:textStyle="bold"

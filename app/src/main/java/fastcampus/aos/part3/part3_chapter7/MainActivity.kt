@@ -2,6 +2,7 @@ package fastcampus.aos.part3.part3_chapter7
 
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -53,8 +54,14 @@ class MainActivity : AppCompatActivity() {
             InputActivity.start(this@MainActivity, item)
         }
 
-        fun onCheckedItem(item: ContentEntity) {
-            viewModel.updateItem(item)
+        fun onLongClickItem(item: ContentEntity): Boolean {
+            viewModel.deleteItem(item)
+            Toast.makeText(this@MainActivity, "삭제되었습니다.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        fun onCheckedItem(item: ContentEntity, checked: Boolean) {
+            viewModel.updateItem(item.copy(isDone = checked))
         }
     }
 }
