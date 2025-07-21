@@ -11,7 +11,7 @@
     </style>
 
     <style name="TextAppearance.App.Large.Bold" parent="TextAppearance.App.Large">
-        <item name="android:textStyle">bold</item>
+        <item name="android:textStyle">bold|italic</item>
     </style>
 
     <style name="TextAppearance.App.Small" parent="TextAppearance.App">
