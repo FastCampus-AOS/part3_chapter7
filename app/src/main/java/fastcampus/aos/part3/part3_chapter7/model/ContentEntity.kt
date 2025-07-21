@@ -7,7 +7,7 @@ import java.io.Serializable
 
 @Entity(tableName = "content")
 data class ContentEntity(
-    @PrimaryKey(true)
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
     @ColumnInfo

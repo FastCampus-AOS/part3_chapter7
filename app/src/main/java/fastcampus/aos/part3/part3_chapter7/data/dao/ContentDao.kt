@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ContentDao {
 
-    @Query("SELECT * FROM CONTENT")
+    @Query("SELECT * FROM content")
     fun selectAll(): Flow<List<ContentEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
