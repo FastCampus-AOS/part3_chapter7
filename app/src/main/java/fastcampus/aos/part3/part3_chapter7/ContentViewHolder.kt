@@ -6,7 +6,8 @@ import fastcampus.aos.part3.part3_chapter7.databinding.ItemContentBinding
 import fastcampus.aos.part3.part3_chapter7.model.ContentEntity
 
 class ContentViewHolder(
-    private val binding: ItemContentBinding
+    private val binding: ItemContentBinding,
+    private val handler: MainActivity.Handler
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: ContentEntity) {

@@ -7,11 +7,16 @@
         <variable
             name="item"
             type="fastcampus.aos.part3.part3_chapter7.model.ContentEntity" />
+
+        <variable
+            name="handler"
+            type="fastcampus.aos.part3.part3_chapter7.MainActivity.Handler" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> handler.onClickItem(item)}"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp">
 
@@ -20,6 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:checked="@{item.done}"
+            android:onCheckedChanged="@{(button, check) -> handler.onCheckedItem(item)}"
             android:text="@{item.content}"
             android:textSize="18sp"
             android:textStyle="bold"

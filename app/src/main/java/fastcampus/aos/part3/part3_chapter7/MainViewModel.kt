@@ -3,9 +3,12 @@ package fastcampus.aos.part3.part3_chapter7
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import fastcampus.aos.part3.part3_chapter7.model.ContentEntity
 import fastcampus.aos.part3.part3_chapter7.repository.ContentRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,4 +21,10 @@ class MainViewModel @Inject constructor(
             started = SharingStarted.WhileSubscribed(5000),
             scope = viewModelScope
         )
+
+    fun updateItem(item: ContentEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            contentRepository.modify(item)
+        }
+    }
 }

@@ -3,10 +3,11 @@ package fastcampus.aos.part3.part3_chapter7
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import fastcampus.aos.part3.part3_chapter7.MainActivity.Handler
 import fastcampus.aos.part3.part3_chapter7.databinding.ItemContentBinding
 import fastcampus.aos.part3.part3_chapter7.model.ContentEntity
 
-class ListAdapter : androidx.recyclerview.widget.ListAdapter<ContentEntity, ContentViewHolder>(diffCallback) {
+class ListAdapter(private val handler: Handler) : androidx.recyclerview.widget.ListAdapter<ContentEntity, ContentViewHolder>(diffCallback) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

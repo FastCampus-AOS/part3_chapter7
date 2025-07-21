@@ -14,18 +14,28 @@ import javax.inject.Inject
 @HiltViewModel
 class InputViewModel @Inject constructor(
     private val contentRepository: ContentRepository
-) : ViewModel(){
+) : ViewModel() {
 
     private val _doneEvent = MutableLiveData<Unit>()
     val doneEvent: LiveData<Unit> = _doneEvent
 
     var content = MutableLiveData<String>()
     var memo = MutableLiveData<String?>()
+    var item: ContentEntity? = null
+
+    fun initData(item: ContentEntity) {
+        this.item = item
+        content.value = item.content
+        memo.value = item.memo
+    }
 
     fun insertData() {
         content.value?.let { content ->
             viewModelScope.launch(Dispatchers.IO) {
-                contentRepository.insert(ContentEntity(content = content, memo = memo.value))
+                contentRepository.insert(
+                    item?.copy(content = content, memo = memo.value)
+                        ?: ContentEntity(content = content, memo = memo.value)
+                )
                 _doneEvent.postValue(Unit)
             }
         }

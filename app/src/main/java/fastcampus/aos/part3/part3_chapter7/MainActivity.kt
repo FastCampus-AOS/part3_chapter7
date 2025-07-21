@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import fastcampus.aos.part3.part3_chapter7.databinding.ActivityMainBinding
+import fastcampus.aos.part3.part3_chapter7.model.ContentEntity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
-    private val adapter: ListAdapter by lazy { ListAdapter() }
+    private val adapter: ListAdapter by lazy { ListAdapter(Handler()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +45,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onClickAdd() {
+        InputActivity.start(this)
+    }
 
+    inner class Handler {
+        fun onClickItem(item: ContentEntity) {
+            InputActivity.start(this@MainActivity, item)
+        }
+
+        fun onCheckedItem(item: ContentEntity) {
+            viewModel.updateItem(item)
+        }
     }
 }
